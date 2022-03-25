@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign UP</title>
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+        #box1{
+            background-color: rgb(50,47,48);
+            margin-top: 20px;
+            margin-left: 515px;
+            margin-right: 530px;
+            text-align: center;
+            /* height: 600px; */
+            padding-bottom: 18px;
+            
+            color: white;
+            line-height: 0px;
+            font-size: 25px;
+            font-weight: bold;
+            padding-top: 25px;
+        }
+
+        #ruler{
+            background-color: white;
+            margin: auto;
+            width: 50px;
+            height: 3px;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .signup{
+            background-color: rgb(255, 0, 109);
+            color: white;
+            font-size: 25px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 10px;
+            width: 370px;
+            border-radius: 30px;
+        }
+
+        .p3{
+            margin-top: 80px;
+        }
+
+        .p4{
+            color: rgb(255, 0, 109);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body id="body">
+    
+    <button id="button">Create Page</button>
+
+</body>
+</html> 
+<script>
+    let btn = document.getElementById("button");
+    let body = document.getElementById("body");
+    // window.addEventListener('load',displaypage);   //Window Loading syntax
+    btn.addEventListener('click',displaypage);   //Page setup
+
+    function displaypage(){
+        console.log("Working")
+        let outerbox = document.createElement('div');
+        outerbox.setAttribute("id",'box1');
+        let p1 = document.createElement('p');
+        let p2 = document.createElement('p');
+
+        body.appendChild(outerbox);
+        outerbox.append(p1,p2);
+        // p1.textContent("Today, Sun, 26th Apr");
+        // p2.textContent("Schedule - 7AM Onwards");
+        let text1= document.createTextNode("Today, Sun, 26th Apr");
+        let text2= document.createTextNode("Schedule - 7AM Onwards");
+        p1.appendChild(text1);
+        p2.appendChild(text2);
+        
+
+        let items = ["Parathe Sharathe with", "Spices and Immunity with", "Postman Vegetables with"];
+        let names = ["Chef Archana Doshi", "Nutrition expert Manasa Rajan", "Chef Jason D'Souza"];
+
+        for (let i=0; i<names.length; i++){
+            
+            let p3 = document.createElement('p');
+            let p4 = document.createElement('P');
+            p3.setAttribute("class",'p3');
+            p4.setAttribute("class",'p4');
+            let text3 = document.createTextNode(items[i]);
+            let text4 = document.createTextNode(names[i]);
+            p3.appendChild(text3);
+            p4.appendChild(text4);
+            outerbox.appendChild(p3);
+            outerbox.appendChild(p4);
+            
+            let ruler = document.createElement('div');
+            ruler.setAttribute('id','ruler');
+            outerbox.append(ruler);
+
+        }
+
+        let button1 = document.createElement('button');
+        // button1.textContent("SIGN UP NOW");
+        newtext = document.createTextNode("SIGN UP NOW");
+        outerbox.append(button1);
+        button1.append(newtext);
+        button1.setAttribute('class', 'signup')
+
+
+    }
+    
+
+</script>
