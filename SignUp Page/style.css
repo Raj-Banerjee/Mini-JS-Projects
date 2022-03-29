@@ -1,0 +1,49 @@
+body{
+    background-color: black;
+}
+
+#box1{
+    background-color: rgb(50,47,48);
+    margin-top: 20px;
+    margin-left: 515px;
+    margin-right: 530px;
+    text-align: center;
+    /* height: 600px; */
+    padding-bottom: 18px;
+    
+    color: white;
+    line-height: 0px;
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 25px;
+}
+
+#ruler{
+    background-color: white;
+    margin: auto;
+    width: 50px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.signup{
+    background-color: rgb(255, 0, 109);
+    color: white;
+    font-size: 25px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    width: 370px;
+    border-radius: 30px;
+}
+
+.p3{
+    margin-top: 80px;
+}
+
+.p4{
+    color: rgb(255, 0, 109);
+    margin-top: 20px;
+}
