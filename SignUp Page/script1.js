@@ -9,5 +9,3 @@ let btn = document.getElementById("button");
         outerbox.setAttribute("id",'box1');
         let p1 = document.createElement('p');
         let p2 = document.createElement('p');
-
-        
