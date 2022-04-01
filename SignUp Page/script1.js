@@ -39,4 +39,14 @@ let btn = document.getElementById("button");
             let ruler = document.createElement('div');
             ruler.setAttribute('id','ruler');
             outerbox.append(ruler);
+        }
 
+        let button1 = document.createElement('button');
+        // button1.textContent("SIGN UP NOW");
+        newtext = document.createTextNode("SIGN UP NOW");
+        outerbox.append(button1);
+        button1.append(newtext);
+        button1.setAttribute('class', 'signup')
+
+
+    }
