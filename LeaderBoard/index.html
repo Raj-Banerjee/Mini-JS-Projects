@@ -5,8 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
+    <style>
+        #complete{
+            display: flex;
+            flex-direction: column;
+        }
+        #tablebox{
+            display: flex;
+            flex-direction: row;
+            
+        }
+
+        #heading{
+            border: 2px solid black;
+            padding: 50px;
+        }
+        
+        #leftbox{
+            border: 2px solid red;
+            padding: 50px;
+            flex-grow: 1;
+            
+            
+        }
+        
+        #rightbox{
+            border: 2px solid green;
+            padding: 50px;
+            flex-grow: 1;
+            
+        }
+
+    </style>
 </head>
 <body>
-    
+    <div id="complete">
+        <div id="heading"></div>
+        <div id="tablebox">
+           
+            <div id="leftbox">
+                
+                <div id="totalscore"></div>
+               
+                <div id="minvalue">
+                    <div id="min">-</div>
+                    <div>Min</div>
+                </div>
+                
+                <div id="maxvalue">
+                    <div id="max">-</div>
+                    <div>max</div>
+                </div>
+
+                <div id="scorename">SCORE</div>
+                <div id="score">#</div>
+
+                <div id="numpad">
+                    <button class="font" onclick="number(1)">1</button>
+                    <button class="font" onclick="number(2)">2</button>
+                    <button class="font" onclick="number(3)">3</button>
+                    <button class="font" onclick="number(4)">4</button>
+                    <button class="font" onclick="number(5)">5</button>
+                    <button class="font" onclick="number(6)">6</button>
+                    <button class="font" onclick="number(7)">7</button>
+                    <button class="font" onclick="number(8)">8</button>
+                    <button class="font" onclick="number(9)">9</button>
+                    <button class="font" onclick="number(0)">0</button>
+                </div>
+                <button id="submit"  onclick="submit()">SUBMIT</button>
+
+
+
+
+            </div>
+            <div id="rightbox"></div>
+        </div>
+    </div>
 </body>
 </html>
