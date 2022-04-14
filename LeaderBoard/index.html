@@ -45,7 +45,7 @@
            
             <div id="leftbox">
                 
-                <div id="totalscore"></div>
+                <div id="totalscore">-</div>
                
                 <div id="minvalue">
                     <div id="min">-</div>
@@ -79,6 +79,7 @@
 
             </div>
             <div id="rightbox">
+                <div id="scoreHeading">GAME SCORES</div>
                 <div id="scoreboard"></div>
             </div>
         </div>
@@ -87,6 +88,7 @@
 
 <script>
     let finalnum = "";
+    let count = 0;
         function number(n){
             var h = document.getElementById("display");
             finalnum = finalnum + n;
@@ -103,7 +105,7 @@
             let minvalue= least.textContent;
             let maxvalue= most.textContent;
 
-            if(minvalue == maxvalue == '-'){
+            if(maxvalue == "-"){
                 least.textContent = finalnum; 
                 most.textContent = finalnum;
             }
@@ -113,11 +115,30 @@
             if(finalnum > maxvalue){
                 most.textContent = finalnum;
             }
+
+            // minvalue= +(minvalue)
+            // maxvalue= +(maxvalue)
             
+            let tscore = document.getElementById("totalscore")
+            tscore.textContent = +(most.textContent) + +(least.textContent);
+
             var h = document.getElementById("display");
             h.textContent="#";
             finalnum = "";
-        }
 
+            // *********************************Right Side************************************
+            rightpart()
+
+           
+        }
+        
+        function rightpart(){
+            let scoreboard = document.getElementById("scoreboard");
+            // scoreboard.textContent = "Hello";
+            let v = document.createElement("div");
+            v.textContent = "Hello New";
+            scoreboard.append(v);
+
+        }
 </script>
 </html>
