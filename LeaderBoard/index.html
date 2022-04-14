@@ -58,7 +58,7 @@
                 </div>
 
                 <div id="scorename">SCORE</div>
-                <div id="score">#</div>
+                <div id="display">#</div>
 
                 <div id="numpad">
                     <button class="font" onclick="number(1)">1</button>
@@ -78,8 +78,46 @@
 
 
             </div>
-            <div id="rightbox"></div>
+            <div id="rightbox">
+                <div id="scoreboard"></div>
+            </div>
         </div>
     </div>
 </body>
+
+<script>
+    let finalnum = "";
+        function number(n){
+            var h = document.getElementById("display");
+            finalnum = finalnum + n;
+            h.textContent = finalnum;
+            
+            // console.log(finalnum)
+        }
+
+        function submit(){
+            finalnum = +(finalnum);
+            var least = document.getElementById("min");
+            var most = document.getElementById("max");
+
+            let minvalue= least.textContent;
+            let maxvalue= most.textContent;
+
+            if(minvalue == maxvalue == '-'){
+                least.textContent = finalnum; 
+                most.textContent = finalnum;
+            }
+            if(minvalue > finalnum ){
+                least.textContent = finalnum; 
+            }
+            if(finalnum > maxvalue){
+                most.textContent = finalnum;
+            }
+            
+            var h = document.getElementById("display");
+            h.textContent="#";
+            finalnum = "";
+        }
+
+</script>
 </html>
