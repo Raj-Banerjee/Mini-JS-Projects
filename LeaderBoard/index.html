@@ -25,6 +25,7 @@
             border: 2px solid red;
             padding: 50px;
             flex-grow: 1;
+            background-color: yellow;
             
             
         }
@@ -127,18 +128,26 @@
             finalnum = "";
 
             // *********************************Right Side************************************
-            rightpart()
+            count= count+1;
+            let scoreboard = document.getElementById("scoreboard");
+            // scoreboard.textContent = "Hello";
+            let v = document.createElement("div");
+            v.textContent = "Game " + count + " - " + tscore.textContent;
+            scoreboard.append(v);
+            // rightpart()
 
            
         }
         
-        function rightpart(){
-            let scoreboard = document.getElementById("scoreboard");
-            // scoreboard.textContent = "Hello";
-            let v = document.createElement("div");
-            v.textContent = "Hello New";
-            scoreboard.append(v);
+        // function rightpart(){
 
-        }
+        //     count= count+1;
+        //     let scoreboard = document.getElementById("scoreboard");
+        //     // scoreboard.textContent = "Hello";
+        //     let v = document.createElement("div");
+        //     v.textContent = "Game " + count + " - " + tscore.textContent;
+        //     scoreboard.append(v);
+
+        // }
 </script>
 </html>
