@@ -185,13 +185,22 @@
         
             function deletetotal(){
                 let scoreboard = document.getElementById("scoreboard");
-                let scorevalue = scoreboard.childNodes
-                let c = 0;
-                let len = scoreboard.childNodes.length
+                let scorevalue = scoreboard.childNodes;
+                let len = scoreboard.childNodes.length;
+                let c=0;
                 
                 do{
                     scorevalue[0].remove();
                 }while(len!=0)
+                makedefault()
+            }
+
+            function deletelast(){
+                let scoreboard = document.getElementById("scoreboard");
+                let scorevalue = scoreboard.childNodes
+                let c = 0;
+                let len = scoreboard.childNodes.length
+                scorevalue[len-1].remove();
             }
 
         
