@@ -141,10 +141,28 @@
             scoreboard.append(v);
             // rightpart()
 
-           
+            
         }
         function deleteeven(){
+            let scoreboard = document.getElementById("scoreboard");
+            let scorevalue = scoreboard.childNodes
+            let c = 0;
+            let len = scoreboard.childNodes.length
+            // console.log(len)
 
+            for (c;c<len;c++){
+                console.log(c)
+                if(c%2==0){
+                    scorevalue[c].remove()
+                }
+            }
+            // while(c<len){
+
+            //     scorevalue[c].remove();
+            //     console.log(scorevalue[c])
+            //     c=c+2;
+            // }
+            
         }
         
         // function rightpart(){
