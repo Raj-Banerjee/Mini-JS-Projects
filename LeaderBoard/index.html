@@ -148,23 +148,60 @@
             let scorevalue = scoreboard.childNodes
             let c = 1;
             let len = scoreboard.childNodes.length
-            // console.log(len)
-
-            for (c;c<=len;c++){
+            
+            for (c;c<len;c++){
                 console.log(scorevalue[c])
                 // if(c%2=='0'){
                 //     scorevalue[c].remove()
                 // }
-                while(c<=len){
-    
+                while(c<len){
                     scorevalue[c].remove();
-                    console.log(scorevalue[c])
+                    // console.log(scorevalue[c])
                     c=c+1;
                 }
             }
-            
         }
+
+
+        function deleteodd(){
+            let scoreboard = document.getElementById("scoreboard");
+            let scorevalue = scoreboard.childNodes
+            let c = 0;
+            let len = scoreboard.childNodes.length
+            
+            for (c;c<len;c++){
+                console.log(scorevalue[c])
+                // if(c%2=='0'){
+                    //     scorevalue[c].remove()
+                    // }
+                    while(c<len){
+                        scorevalue[c].remove();
+                        // console.log(scorevalue[c])
+                        c=c+1;
+                    }
+                    makedefault()
+                }
+            }
         
+            function deletetotal(){
+                
+            }
+
+        
+        function makedefault(){
+            let scoreboard = document.getElementById("scoreboard");
+            let len = scoreboard.childNodes.length
+            let totalscore = document.getElementById("totalscore");
+            if (len == 0){
+                let min = document.getElementById("min");
+                let max = document.getElementById("max");
+        
+                min.textContent='-';
+                max.textContent='-';
+                totalscore.textContent='-';
+
+        }
+    }
         // function rightpart(){
 
         //     count= count+1;
