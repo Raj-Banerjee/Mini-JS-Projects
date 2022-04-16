@@ -184,7 +184,14 @@
             }
         
             function deletetotal(){
+                let scoreboard = document.getElementById("scoreboard");
+                let scorevalue = scoreboard.childNodes
+                let c = 0;
+                let len = scoreboard.childNodes.length
                 
+                do{
+                    scorevalue[0].remove();
+                }while(len!=0)
             }
 
         
