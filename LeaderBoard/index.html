@@ -148,13 +148,16 @@
             let scorevalue = scoreboard.childNodes
             let c = 1;
             let len = scoreboard.childNodes.length
+            console.log(typeof(scorevalue));
             
             for (c;c<len;c++){
-                console.log(scorevalue[c])
+                // console.log(scorevalue[c])
                 // if(c%2=='0'){
                 //     scorevalue[c].remove()
                 // }
-                while(c<len){
+
+
+                while(c<scoreboard.childNodes.length){
                     scorevalue[c].remove();
                     // console.log(scorevalue[c])
                     c=c+1;
@@ -174,7 +177,7 @@
                 // if(c%2=='0'){
                     //     scorevalue[c].remove()
                     // }
-                    while(c<len){
+                    while(c<scoreboard.childNodes.length){
                         scorevalue[c].remove();
                         // console.log(scorevalue[c])
                         c=c+1;
@@ -189,14 +192,11 @@
                 let len = scoreboard.childNodes.length;
                 let c=0;
                 
-                // do{
-                //     scorevalue[0].remove();
-                // }while(len!=0)
-                while(len!==0){
+                while(scoreboard.childNodes.length!==0){
                     scorevalue[0].remove();   
                 }
-                makedefault();
                 console.log("Yo")
+                makedefault();
             }
 
             function deletelast(){
