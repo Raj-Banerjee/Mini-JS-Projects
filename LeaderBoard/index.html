@@ -179,12 +179,33 @@
                         // console.log(scorevalue[c])
                         c=c+1;
                     }
-                    makedefault()
                 }
+                makedefault()
             }
         
             function deletetotal(){
+                let scoreboard = document.getElementById("scoreboard");
+                let scorevalue = scoreboard.childNodes;
+                let len = scoreboard.childNodes.length;
+                let c=0;
                 
+                // do{
+                //     scorevalue[0].remove();
+                // }while(len!=0)
+                while(len!==0){
+                    scorevalue[0].remove();   
+                }
+                makedefault();
+                console.log("Yo")
+            }
+
+            function deletelast(){
+                let scoreboard = document.getElementById("scoreboard");
+                let scorevalue = scoreboard.childNodes
+                let c = 0;
+                let len = scoreboard.childNodes.length
+                scorevalue[len-1].remove();
+                makedefault();
             }
 
         
