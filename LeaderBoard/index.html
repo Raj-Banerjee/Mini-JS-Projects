@@ -22,12 +22,13 @@
         }
         
         #leftbox{
-            
-            border: 2px solid red;
+            display: flex;
+            border: 5px solid red;
             padding: 50px;
             flex-grow: 1;
-            background-color: yellow;
-            
+            background-color: yellow;  
+            flex-direction: column;  
+            align-items: center;
             
         }
         
@@ -35,8 +36,18 @@
             border: 2px solid green;
             padding: 50px;
             flex-grow: 1;
-            
         }
+        #totalscore, #display{
+            border: 2px solid red;
+            padding: 20px 50px;
+        }
+
+        #maxmin{
+            display: flex;
+            align-content: space-between;
+        }
+            
+        
         #numpad{
             display: grid;
             grid-template-columns: 33.33% 33.33% 33.33%;
@@ -52,17 +63,20 @@
             padding: 50px;
         }
         #numpad>button{
-            display: flex;
-            flex-direction: row;
-            
+            /* display: flex;
+            flex-direction: row; */
+            height: 55px;
+            width: 55px;
+            margin: 10px;
+            font-size: 40px;
         }
 
         #numpad>button:nth-child(10){
             background-color:red;
-            align-content: center;
+            /* align-content: center;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; */
             
         }
 
@@ -74,19 +88,19 @@
         <div id="tablebox">
            
             <div id="leftbox">
-                
+            
                 <div id="totalscore">-</div>
-               
-                <div id="minvalue">
-                    <div id="min">-</div>
-                    <div>Min</div>
+                <div id="maxmin">
+                    <div id="minvalue">
+                        <div id="min">-</div>
+                        <div>Min</div>
+                    </div>
+            
+                    <div id="maxvalue">
+                        <div id="max">-</div>
+                        <div>max</div>
+                    </div>
                 </div>
-                
-                <div id="maxvalue">
-                    <div id="max">-</div>
-                    <div>max</div>
-                </div>
-
                 <div id="scorename">SCORE</div>
                 <div id="display">#</div>
 
