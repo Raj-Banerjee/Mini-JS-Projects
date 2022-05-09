@@ -4,7 +4,7 @@ let API_KEY = 'c371194';
 
 async function findmovie(){
     let movie = document.getElementById("movie").value;
-    let res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movie}`);
+    let res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&t=${movie}`);
     let data = await res.json();
     console.log(data);
 }
@@ -55,15 +55,15 @@ function displayData(data) {
     data.forEach(function (product){
         let productcard = document.createElement("div");
 
-        let poster = document.createElement("img");
-        poster.src = product.poster;
+        let Poster = document.createElement("img");
+        Poster.src = product.Poster;
 
         let Title = document.createElement("p");
         Title.textContent = product.Title;
         let year = document.createElement("p");
         year.textContent = product.year;
 
-        productcard.append(img,Title,year);
+        productcard.append(Poster,Title,year);
         let container = document.getElementById("container");
         container.appendChild(productcard);
     });
