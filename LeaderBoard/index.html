@@ -1,237 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leaderboard</title>
     <style>
-        #complete{
-            display: flex;
-            flex-direction: column;
-        }
-        #tablebox{
-            display: flex;
-            flex-direction: row;
-            
-        }
+      #complete {
+        display: flex;
+        flex-direction: column;
+      }
+      #tablebox {
+        display: flex;
+        flex-direction: row;
+      }
 
-        #heading{
-            border: 2px solid black;
-            padding: 50px;
-        }
-        
-        #leftbox{
-            border: 2px solid red;
-            padding: 50px;
-            flex-grow: 1;
-            background-color: yellow;
-            
-            
-        }
-        
-        #rightbox{
-            border: 2px solid green;
-            padding: 50px;
-            flex-grow: 1;
-            
-        }
+      #heading {
+        border: 2px solid black;
+        padding: 50px;
+      }
 
+      #leftbox {
+        border: 2px solid red;
+        padding: 50px;
+        flex-grow: 1;
+        background-color: yellow;
+      }
+
+      #rightbox {
+        border: 2px solid green;
+        padding: 50px;
+        flex-grow: 1;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="complete">
-        <div id="heading"></div>
-        <div id="tablebox">
-           
-            <div id="leftbox">
-                
-                <div id="totalscore">-</div>
-               
-                <div id="minvalue">
-                    <div id="min">-</div>
-                    <div>Min</div>
-                </div>
-                
-                <div id="maxvalue">
-                    <div id="max">-</div>
-                    <div>max</div>
-                </div>
+      <div id="heading"></div>
+      <div id="tablebox">
+        <div id="leftbox">
+          <div id="totalscore">-</div>
 
-                <div id="scorename">SCORE</div>
-                <div id="display">#</div>
+          <div id="minvalue">
+            <div id="min">-</div>
+            <div>Min</div>
+          </div>
 
-                <div id="numpad">
-                    <button class="font" onclick="number(1)">1</button>
-                    <button class="font" onclick="number(2)">2</button>
-                    <button class="font" onclick="number(3)">3</button>
-                    <button class="font" onclick="number(4)">4</button>
-                    <button class="font" onclick="number(5)">5</button>
-                    <button class="font" onclick="number(6)">6</button>
-                    <button class="font" onclick="number(7)">7</button>
-                    <button class="font" onclick="number(8)">8</button>
-                    <button class="font" onclick="number(9)">9</button>
-                    <button class="font" onclick="number(0)">0</button>
-                </div>
-                <button id="submit"  onclick="submit()">SUBMIT</button>
+          <div id="maxvalue">
+            <div id="max">-</div>
+            <div>max</div>
+          </div>
 
+          <div id="scorename">SCORE</div>
+          <div id="display">#</div>
 
-
-
-            </div>
-            <div id="rightbox">
-                <div id="scoreHeading">GAME SCORES</div>
-                <div id="scoreboard"></div>
-                <div><button id="even" onclick="deleteeven()">Delete Even</button></div>
-                <div><button id="odd" onclick="deleteodd()">Delete Odd</button></div>
-                <div><button id="total" onclick="deletetotal()">Delete All</button></div>
-                <div><button id="last" onclick="deletelast()">Delete last</button></div>
-            </div>
-            
+          <div id="numpad">
+            <button class="font" onclick="number(1)">1</button>
+            <button class="font" onclick="number(2)">2</button>
+            <button class="font" onclick="number(3)">3</button>
+            <button class="font" onclick="number(4)">4</button>
+            <button class="font" onclick="number(5)">5</button>
+            <button class="font" onclick="number(6)">6</button>
+            <button class="font" onclick="number(7)">7</button>
+            <button class="font" onclick="number(8)">8</button>
+            <button class="font" onclick="number(9)">9</button>
+            <button class="font" onclick="number(0)">0</button>
+          </div>
+          <button id="submit" onclick="submit()">SUBMIT</button>
         </div>
+        <div id="rightbox">
+          <div id="scoreHeading">GAME SCORES</div>
+          <div id="scoreboard"></div>
+          <div>
+            <button id="even" onclick="deleteeven()">Delete Even</button>
+          </div>
+          <div><button id="odd" onclick="deleteodd()">Delete Odd</button></div>
+          <div>
+            <button id="total" onclick="deletetotal()">Delete All</button>
+          </div>
+          <div>
+            <button id="last" onclick="deletelast()">Delete last</button>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 
-<script>
+  <script>
     let finalnum = "";
     let count = 0;
-        function number(n){
-            var h = document.getElementById("display");
-            finalnum = finalnum + n;
-            h.textContent = finalnum;
-            
-            // console.log(finalnum)
-        }
+    function number(n) {
+      var h = document.getElementById("display");
+      finalnum = finalnum + n;
+      h.textContent = finalnum;
 
-        function submit(){
-            finalnum = +(finalnum);
-            var least = document.getElementById("min");
-            var most = document.getElementById("max");
-
-            let minvalue= least.textContent;
-            let maxvalue= most.textContent;
-
-            if(maxvalue == "-"){
-                least.textContent = finalnum; 
-                most.textContent = finalnum;
-            }
-            if(minvalue > finalnum ){
-                least.textContent = finalnum; 
-            }
-            if(finalnum > maxvalue){
-                most.textContent = finalnum;
-            }
-
-            // minvalue= +(minvalue)
-            // maxvalue= +(maxvalue)
-            
-            let tscore = document.getElementById("totalscore")
-            tscore.textContent = +(most.textContent) + +(least.textContent);
-
-            var h = document.getElementById("display");
-            h.textContent="#";
-            finalnum = "";
-
-            // *********************************Right Side************************************
-            count= count+1;
-            let scoreboard = document.getElementById("scoreboard");
-            // scoreboard.textContent = "Hello";
-            let v = document.createElement("div");
-            v.textContent = "Game " + count + " - " + tscore.textContent;
-            scoreboard.append(v);
-            // rightpart()
-
-            
-        }
-        function deleteeven(){
-            let scoreboard = document.getElementById("scoreboard");
-            let scorevalue = scoreboard.childNodes
-            let c = 1;
-            let len = scoreboard.childNodes.length
-            
-            for (c;c<len;c++){
-                console.log(scorevalue[c])
-                // if(c%2=='0'){
-                //     scorevalue[c].remove()
-                // }
-                while(c<len){
-                    scorevalue[c].remove();
-                    // console.log(scorevalue[c])
-                    c=c+1;
-                }
-            }
-        }
-
-
-        function deleteodd(){
-            let scoreboard = document.getElementById("scoreboard");
-            let scorevalue = scoreboard.childNodes
-            let c = 0;
-            let len = scoreboard.childNodes.length
-            
-            for (c;c<len;c++){
-                console.log(scorevalue[c])
-                // if(c%2=='0'){
-                    //     scorevalue[c].remove()
-                    // }
-                    while(c<len){
-                        scorevalue[c].remove();
-                        // console.log(scorevalue[c])
-                        c=c+1;
-                    }
-                }
-                makedefault()
-            }
-        
-            function deletetotal(){
-                let scoreboard = document.getElementById("scoreboard");
-                let scorevalue = scoreboard.childNodes;
-                let len = scoreboard.childNodes.length;
-                let c=0;
-                
-                // do{
-                //     scorevalue[0].remove();
-                // }while(len!=0)
-                while(len!==0){
-                    scorevalue[0].remove();   
-                }
-                makedefault();
-                console.log("Yo")
-            }
-
-            function deletelast(){
-                let scoreboard = document.getElementById("scoreboard");
-                let scorevalue = scoreboard.childNodes
-                let c = 0;
-                let len = scoreboard.childNodes.length
-                scorevalue[len-1].remove();
-                makedefault();
-            }
-
-        
-        function makedefault(){
-            let scoreboard = document.getElementById("scoreboard");
-            let len = scoreboard.childNodes.length
-            let totalscore = document.getElementById("totalscore");
-            if (len == 0){
-                let min = document.getElementById("min");
-                let max = document.getElementById("max");
-        
-                min.textContent='-';
-                max.textContent='-';
-                totalscore.textContent='-';
-
-        }
+      // console.log(finalnum)
     }
-        // function rightpart(){
 
-        //     count= count+1;
-        //     let scoreboard = document.getElementById("scoreboard");
-        //     // scoreboard.textContent = "Hello";
-        //     let v = document.createElement("div");
-        //     v.textContent = "Game " + count + " - " + tscore.textContent;
-        //     scoreboard.append(v);
+    function submit() {
+      finalnum = +finalnum;
+      var least = document.getElementById("min");
+      var most = document.getElementById("max");
 
+      let minvalue = least.textContent;
+      let maxvalue = most.textContent;
+
+      if (maxvalue == "-") {
+        least.textContent = finalnum;
+        most.textContent = finalnum;
+      }
+      if (minvalue > finalnum) {
+        least.textContent = finalnum;
+      }
+      if (finalnum > maxvalue) {
+        most.textContent = finalnum;
+      }
+
+      // minvalue= +(minvalue)
+      // maxvalue= +(maxvalue)
+
+      let tscore = document.getElementById("totalscore");
+      tscore.textContent = +most.textContent + +least.textContent;
+
+      var h = document.getElementById("display");
+      h.textContent = "#";
+      finalnum = "";
+
+      // *********************************Right Side************************************
+      count = count + 1;
+      let scoreboard = document.getElementById("scoreboard");
+      // scoreboard.textContent = "Hello";
+      let v = document.createElement("div");
+      v.textContent = "Game " + count + " - " + tscore.textContent;
+      scoreboard.append(v);
+      // rightpart()
+    }
+    function deleteeven() {
+      let scoreboard = document.getElementById("scoreboard");
+      let scorevalue = scoreboard.childNodes;
+      let c = 1;
+      let len = scoreboard.childNodes.length;
+
+      for (c; c < len; c++) {
+        console.log(scorevalue[c]);
+        // if(c%2=='0'){
+        //     scorevalue[c].remove()
         // }
-</script>
+        while (c < len) {
+          scorevalue[c].remove();
+          // console.log(scorevalue[c])
+          c = c + 1;
+        }
+      }
+    }
+
+    function deleteodd() {
+      let scoreboard = document.getElementById("scoreboard");
+      let scorevalue = scoreboard.childNodes;
+      let c = 0;
+      let len = scoreboard.childNodes.length;
+      console.log(len);
+
+      for (c; c < len; c++) {
+        console.log(scorevalue[c]);
+        // if(c%2=='0'){
+        //     scorevalue[c].remove()
+        // }
+        while (c < len) {
+          scorevalue[c].remove();
+          // console.log(scorevalue[c])
+          c = c + 1;
+        }
+      }
+      makedefault();
+    }
+
+    function deletetotal() {
+      let scoreboard = document.getElementById("scoreboard");
+      let scorevalue = scoreboard.childNodes;
+      let len = scoreboard.childNodes.length;
+      let c = 0;
+
+      // do{
+      //     scorevalue[0].remove();
+      // }while(len!=0)
+
+      let min = document.getElementById("min");
+      let max = document.getElementById("max");
+
+      min.textContent = "-";
+      max.textContent = "-";
+      totalscore.textContent = "-";
+      while (len !== 0) {
+        scorevalue[0].remove();
+      }
+
+      console.log("Yo");
+    }
+
+    function deletelast() {
+      let scoreboard = document.getElementById("scoreboard");
+      let scorevalue = scoreboard.childNodes;
+      let c = 0;
+      let len = scoreboard.childNodes.length;
+      scorevalue[len - 1].remove();
+      makedefault();
+    }
+
+    function makedefault() {
+      let scoreboard = document.getElementById("scoreboard");
+      let len = scoreboard.childNodes.length;
+      let totalscore = document.getElementById("totalscore");
+      if (len == 0) {
+        let min = document.getElementById("min");
+        let max = document.getElementById("max");
+
+        min.textContent = "-";
+        max.textContent = "-";
+        totalscore.textContent = "-";
+      }
+    }
+    // function rightpart(){
+
+    //     count= count+1;
+    //     let scoreboard = document.getElementById("scoreboard");
+    //     // scoreboard.textContent = "Hello";
+    //     let v = document.createElement("div");
+    //     v.textContent = "Game " + count + " - " + tscore.textContent;
+    //     scoreboard.append(v);
+
+    // }
+  </script>
 </html>
