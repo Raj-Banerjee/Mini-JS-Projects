@@ -21,6 +21,63 @@
       }
 
       #leftbox {
+        display: flex;
+        border: 5px solid red;
+        padding: 50px;
+        flex-grow: 1;
+        background-color: yellow;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #rightbox {
+        border: 2px solid green;
+        padding: 50px;
+        flex-grow: 1;
+      }
+      #totalscore,
+      #display {
+        border: 2px solid red;
+        padding: 20px 50px;
+      }
+
+      #maxmin {
+        display: flex;
+        align-content: space-between;
+      }
+
+      #numpad {
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        /* grid-template: 
+            "a b c"
+            "d e f"
+            "g h i"
+            "  j  "; */
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        /* margin: 25px; */
+        padding: 50px;
+      }
+      #numpad > button {
+        /* display: flex;
+            flex-direction: row; */
+        height: 55px;
+        width: 55px;
+        margin: 10px;
+        font-size: 40px;
+      }
+
+      #numpad > button:nth-child(10) {
+        background-color: red;
+        /* align-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center; */
+      }
+
+      #leftbox {
         border: 2px solid red;
         padding: 50px;
         flex-grow: 1;
@@ -40,11 +97,19 @@
       <div id="tablebox">
         <div id="leftbox">
           <div id="totalscore">-</div>
+          <div id="maxmin">
+            <div id="minvalue">
+              <div id="min">-</div>
+              <div>Min</div>
+            </div>
 
-          <div id="minvalue">
-            <div id="min">-</div>
-            <div>Min</div>
+            <div id="maxvalue">
+              <div id="max">-</div>
+              <div>max</div>
+            </div>
           </div>
+          <div id="scorename">SCORE</div>
+          <div id="display">#</div>
 
           <div id="maxvalue">
             <div id="max">-</div>
@@ -94,141 +159,254 @@
       finalnum = finalnum + n;
       h.textContent = finalnum;
 
-      // console.log(finalnum)
-    }
+      function submit() {
+        finalnum = +finalnum;
+        var least = document.getElementById("min");
+        var most = document.getElementById("max");
 
-    function submit() {
-      finalnum = +finalnum;
-      var least = document.getElementById("min");
-      var most = document.getElementById("max");
+        let minvalue = least.textContent;
+        let maxvalue = most.textContent;
 
-      let minvalue = least.textContent;
-      let maxvalue = most.textContent;
+        if (maxvalue == "-") {
+          least.textContent = finalnum;
+          most.textContent = finalnum;
+        }
+        if (minvalue > finalnum) {
+          least.textContent = finalnum;
+        }
+        if (finalnum > maxvalue) {
+          most.textContent = finalnum;
+        }
 
-      if (maxvalue == "-") {
-        least.textContent = finalnum;
-        most.textContent = finalnum;
+        // minvalue= +(minvalue)
+        // maxvalue= +(maxvalue)
+
+        let tscore = document.getElementById("totalscore");
+        tscore.textContent = +most.textContent + +least.textContent;
+
+        var h = document.getElementById("display");
+        h.textContent = "#";
+        finalnum = "";
+
+        // *********************************Right Side************************************
+        count = count + 1;
+        let scoreboard = document.getElementById("scoreboard");
+        // scoreboard.textContent = "Hello";
+        let v = document.createElement("div");
+        v.textContent = "Game " + count + " - " + tscore.textContent;
+        scoreboard.append(v);
+        // rightpart()
       }
-      if (minvalue > finalnum) {
-        least.textContent = finalnum;
-      }
-      if (finalnum > maxvalue) {
-        most.textContent = finalnum;
-      }
+      function deleteeven() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let c = 1;
+        let len = scoreboard.childNodes.length;
+        console.log(typeof scorevalue);
 
-      // minvalue= +(minvalue)
-      // maxvalue= +(maxvalue)
-
-      let tscore = document.getElementById("totalscore");
-      tscore.textContent = +most.textContent + +least.textContent;
-
-      var h = document.getElementById("display");
-      h.textContent = "#";
-      finalnum = "";
-
-      // *********************************Right Side************************************
-      count = count + 1;
-      let scoreboard = document.getElementById("scoreboard");
-      // scoreboard.textContent = "Hello";
-      let v = document.createElement("div");
-      v.textContent = "Game " + count + " - " + tscore.textContent;
-      scoreboard.append(v);
-      // rightpart()
-    }
-    function deleteeven() {
-      let scoreboard = document.getElementById("scoreboard");
-      let scorevalue = scoreboard.childNodes;
-      let c = 1;
-      let len = scoreboard.childNodes.length;
-
-      for (c; c < len; c++) {
-        console.log(scorevalue[c]);
-        // if(c%2=='0'){
-        //     scorevalue[c].remove()
-        // }
-        while (c < len) {
-          scorevalue[c].remove();
+        for (c; c < len; c++) {
           // console.log(scorevalue[c])
-          c = c + 1;
+          // if(c%2=='0'){
+          //     scorevalue[c].remove()
+          // }
+
+          while (c < scoreboard.childNodes.length) {
+            scorevalue[c].remove();
+            // console.log(scorevalue[c])
+            c = c + 1;
+          }
         }
       }
-    }
 
-    function deleteodd() {
-      let scoreboard = document.getElementById("scoreboard");
-      let scorevalue = scoreboard.childNodes;
-      let c = 0;
-      let len = scoreboard.childNodes.length;
-      console.log(len);
+      function deleteodd() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let c = 0;
+        let len = scoreboard.childNodes.length;
 
-      for (c; c < len; c++) {
-        console.log(scorevalue[c]);
-        // if(c%2=='0'){
-        //     scorevalue[c].remove()
-        // }
-        while (c < len) {
-          scorevalue[c].remove();
-          // console.log(scorevalue[c])
-          c = c + 1;
+        for (c; c < len; c++) {
+          console.log(scorevalue[c]);
+          // if(c%2=='0'){
+          //     scorevalue[c].remove()
+          // }
+          while (c < scoreboard.childNodes.length) {
+            scorevalue[c].remove();
+            // console.log(scorevalue[c])
+            c = c + 1;
+          }
+        }
+        makedefault();
+      }
+
+      function deletetotal() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let len = scoreboard.childNodes.length;
+        let c = 0;
+
+        while (scoreboard.childNodes.length !== 0) {
+          scorevalue[0].remove();
+        }
+        console.log("Yo");
+        makedefault();
+      }
+
+      function deletelast() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let c = 0;
+        let len = scoreboard.childNodes.length;
+        scorevalue[len - 1].remove();
+        makedefault();
+      }
+
+      function makedefault() {
+        let scoreboard = document.getElementById("scoreboard");
+        let len = scoreboard.childNodes.length;
+        let totalscore = document.getElementById("totalscore");
+        if (len == 0) {
+          let min = document.getElementById("min");
+          let max = document.getElementById("max");
+
+          min.textContent = "-";
+          max.textContent = "-";
+          totalscore.textContent = "-";
         }
       }
-      makedefault();
-    }
 
-    function deletetotal() {
-      let scoreboard = document.getElementById("scoreboard");
-      let scorevalue = scoreboard.childNodes;
-      let len = scoreboard.childNodes.length;
-      let c = 0;
+      function submit() {
+        finalnum = +finalnum;
+        var least = document.getElementById("min");
+        var most = document.getElementById("max");
 
-      // do{
-      //     scorevalue[0].remove();
-      // }while(len!=0)
+        let minvalue = least.textContent;
+        let maxvalue = most.textContent;
 
-      let min = document.getElementById("min");
-      let max = document.getElementById("max");
+        if (maxvalue == "-") {
+          least.textContent = finalnum;
+          most.textContent = finalnum;
+        }
+        if (minvalue > finalnum) {
+          least.textContent = finalnum;
+        }
+        if (finalnum > maxvalue) {
+          most.textContent = finalnum;
+        }
 
-      min.textContent = "-";
-      max.textContent = "-";
-      totalscore.textContent = "-";
-      while (len !== 0) {
-        scorevalue[0].remove();
+        // minvalue= +(minvalue)
+        // maxvalue= +(maxvalue)
+
+        let tscore = document.getElementById("totalscore");
+        tscore.textContent = +most.textContent + +least.textContent;
+
+        var h = document.getElementById("display");
+        h.textContent = "#";
+        finalnum = "";
+
+        // *********************************Right Side************************************
+        count = count + 1;
+        let scoreboard = document.getElementById("scoreboard");
+        // scoreboard.textContent = "Hello";
+        let v = document.createElement("div");
+        v.textContent = "Game " + count + " - " + tscore.textContent;
+        scoreboard.append(v);
+        // rightpart()
+      }
+      function deleteeven() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let c = 1;
+        let len = scoreboard.childNodes.length;
+
+        for (c; c < len; c++) {
+          console.log(scorevalue[c]);
+          // if(c%2=='0'){
+          //     scorevalue[c].remove()
+          // }
+          while (c < len) {
+            scorevalue[c].remove();
+            // console.log(scorevalue[c])
+            c = c + 1;
+          }
+        }
       }
 
-      console.log("Yo");
-    }
+      function deleteodd() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let c = 0;
+        let len = scoreboard.childNodes.length;
+        console.log(len);
 
-    function deletelast() {
-      let scoreboard = document.getElementById("scoreboard");
-      let scorevalue = scoreboard.childNodes;
-      let c = 0;
-      let len = scoreboard.childNodes.length;
-      scorevalue[len - 1].remove();
-      makedefault();
-    }
+        for (c; c < len; c++) {
+          console.log(scorevalue[c]);
+          // if(c%2=='0'){
+          //     scorevalue[c].remove()
+          // }
+          while (c < len) {
+            scorevalue[c].remove();
+            // console.log(scorevalue[c])
+            c = c + 1;
+          }
+        }
+        makedefault();
+      }
 
-    function makedefault() {
-      let scoreboard = document.getElementById("scoreboard");
-      let len = scoreboard.childNodes.length;
-      let totalscore = document.getElementById("totalscore");
-      if (len == 0) {
+      function deletetotal() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let len = scoreboard.childNodes.length;
+        let c = 0;
+
+        // do{
+        //     scorevalue[0].remove();
+        // }while(len!=0)
+
         let min = document.getElementById("min");
         let max = document.getElementById("max");
 
         min.textContent = "-";
         max.textContent = "-";
         totalscore.textContent = "-";
+        while (len !== 0) {
+          scorevalue[0].remove();
+        }
+
+        console.log("Yo");
       }
+
+      function deletelast() {
+        let scoreboard = document.getElementById("scoreboard");
+        let scorevalue = scoreboard.childNodes;
+        let c = 0;
+        let len = scoreboard.childNodes.length;
+        scorevalue[len - 1].remove();
+        makedefault();
+      }
+
+      function makedefault() {
+        let scoreboard = document.getElementById("scoreboard");
+        let len = scoreboard.childNodes.length;
+        let totalscore = document.getElementById("totalscore");
+        if (len == 0) {
+          let min = document.getElementById("min");
+          let max = document.getElementById("max");
+
+          min.textContent = "-";
+          max.textContent = "-";
+          totalscore.textContent = "-";
+        }
+      }
+      // function rightpart(){
+
+      //     count= count+1;
+      //     let scoreboard = document.getElementById("scoreboard");
+      //     // scoreboard.textContent = "Hello";
+      //     let v = document.createElement("div");
+      //     v.textContent = "Game " + count + " - " + tscore.textContent;
+      //     scoreboard.append(v);
+
+      // }
     }
-    // function rightpart(){
-
-    //     count= count+1;
-    //     let scoreboard = document.getElementById("scoreboard");
-    //     // scoreboard.textContent = "Hello";
-    //     let v = document.createElement("div");
-    //     v.textContent = "Game " + count + " - " + tscore.textContent;
-    //     scoreboard.append(v);
-
-    // }
   </script>
 </html>
