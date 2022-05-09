@@ -52,6 +52,7 @@ async function findmovie() {
 // }
 
 function displayData(data) {
+  //   data.forEach(function (product) {
   let productcard = document.createElement("div");
 
   let Poster = document.createElement("img");
