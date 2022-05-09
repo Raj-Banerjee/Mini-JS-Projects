@@ -60,10 +60,12 @@ function displayData(data) {
 
         let Title = document.createElement("p");
         Title.textContent = product.Title;
+       
         let year = document.createElement("p");
         year.textContent = product.year;
 
         productcard.append(Poster,Title,year);
+        
         let container = document.getElementById("container");
         container.appendChild(productcard);
     });
