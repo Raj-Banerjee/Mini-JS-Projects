@@ -62,7 +62,7 @@ function displayData(data) {
   Title.textContent = data.Title;
 
   let year = document.createElement("p");
-  year.textContent = data.year;
+  year.textContent = data.Year;
 
   productcard.append(Poster, Title, year);
 
