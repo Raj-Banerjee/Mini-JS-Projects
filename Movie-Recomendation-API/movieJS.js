@@ -10,6 +10,15 @@ async function findmovie() {
   displayData(data);
 }
 
+
+async function searchmovie() {
+  let movie = document.getElementById("movie").value;
+  let res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movie}`);
+  let data = await res.json();
+  //   console.log(data);
+  displaySearchData(data);
+}
+
 // {
 //     "Title": "The Avengers",
 //     "Year": "2012",
@@ -67,9 +76,36 @@ function displayData(data) {
   productcard.append(Poster, Title, year);
 
   let container = document.getElementById("container");
-  // console.log(container);
-  // container.innerHTML = "hhhhhhhhhhhh";
   container.append(productcard);
-  // console.log(container);
-  //   });
+}
+
+// "Search": [
+//     {
+//         "Title": "The Avengers",
+//         "Year": "2012",
+//         "imdbID": "tt0848228",
+//         "Type": "movie",
+//         "Poster": "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
+//     },
+
+
+
+function displaySearchData(data) {
+    data.forEach(function (product) {
+        let productcard = document.createElement("div");
+
+        let Poster = document.createElement("img");
+        Poster.src = product.Poster;
+
+        let Title = document.createElement("p");
+        Title.textContent = product.Title;
+
+        let year = document.createElement("p");
+        year.textContent = product.Year;
+
+        productcard.append(Poster, Title, year);
+
+        let container = document.getElementById("container");
+        container.append(productcard);
+    })
 }
