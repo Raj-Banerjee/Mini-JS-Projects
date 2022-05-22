@@ -15,7 +15,7 @@ async function searchmovie() {
   let movie = document.getElementById("movie").value;
   let res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${movie}`);
   let data = await res.json();
-  //   console.log(data);
+    console.log(data);
   displaySearchData(data);
 }
 
@@ -92,6 +92,7 @@ function displayData(data) {
 
 function displaySearchData(data) {
     data.forEach(function (product) {
+        // console.log(product);
         let productcard = document.createElement("div");
 
         let Poster = document.createElement("img");
